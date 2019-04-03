@@ -23,53 +23,82 @@ $(document).ready(function() {
     };
     var contractor = {
         bluePrint: ['H', 'O', 'U', 'S', 'E'],
-        currentHousePart: 0,
+        currentHouseIndex: 0,
         bricks: 0,
         buildHouse: function(bricks){
             this.bricks = this.bricks + bricks;
             houseParts = Math.floor(this.bricks / 100);
             if (houseParts >= 1){
                 for (var i=0; i < houseParts; i++){
-                    $("#plot").append(this.bluePrint[this.currentHousePart]);
-                    this.currentHousePart++;
+                    $("#plot").append(this.bluePrint[this.currentHouseIndex]);
+                    this.currentHouseIndex++;
                 }
                 this.bricks = 0;
             }
+        },
+        destroyHouse: function(){
+            $("#plot").empty();
         }
     };
-    function determineVisibleButtons(){
-        if (digger.buckets >= 5){
-            $("#buildBricks").removeClass("hide");
-        } else {
-            $("#buildBricks").addClass("hide");
-        }
-        if (bricker.bricks >= 100){
-            $("#buildHouse").removeClass("hide");
-        } else {
-            $("#buildHouse").addClass("hide");
-        }
-    }
-    function printCount(){
+    $("#getWorkersBtn").on("click", function(){
+        $("#digDirtBtn").removeClass("hide");
+        $("#buildBricksBtn").removeClass("hide");
+        $("#buildHouseBtn").removeClass("hide");
+        $("#getWorkersBtn").addClass("active");
+        printReasourceCount();
+        determineUsefulButtons();
+    });
+    function printReasourceCount(){
         $("#bucketCounter").text("buckets: " + digger.buckets);
         $("#brickCounter").text("bricks: " + bricker.bricks);
     }
-    $("#getWorkers").on("click", function(){
-        $("#digDirt").removeClass("hide");
-        $("#getWorkers").addClass("active");
-    });
-    $("#digDirt").on("click", function(){
+    function determineUsefulButtons(){
+        if (digger.buckets < 5){
+            $("#buildBricksBtn").addClass("disabled");
+        } else {
+            $("#buildBricksBtn").removeClass("disabled");
+        }
+        if (bricker.bricks < 100){
+            $("#buildHouseBtn").addClass("disabled");
+        } else {
+            $("#buildHouseBtn").removeClass("disabled");
+        }
+        if (contractor.currentHouseIndex > 4){
+            $("#digDirtBtn").addClass("disabled");
+            $("#buildBricksBtn").addClass("disabled");
+            $("#buildHouseBtn").addClass("disabled");
+            $("#getWorkersBtn").addClass("disabled");
+            $("#newHouse").removeClass("hide");
+        }
+    }
+    $("#digDirtBtn").on("click", function(){
         digger.digDirt();
-        printCount();
-        determineVisibleButtons();
+        printReasourceCount();
+        determineUsefulButtons();
     });
-    $("#buildBricks").on("click", function(){
+    $("#buildBricksBtn").on("click", function(){
         bricker.buildBricks(digger.getBuckets());
-        printCount();
-        determineVisibleButtons();
+        printReasourceCount();
+        determineUsefulButtons();
     });
-    $("#buildHouse").on("click", function(){
+    $("#buildHouseBtn").on("click", function(){
         contractor.buildHouse(bricker.getBricks());
-        printCount();
-        determineVisibleButtons();
+        printReasourceCount();
+        determineUsefulButtons();
+    });
+    $("#newHouse").on("click", function(){
+        digger.buckets = 0;
+        bricker.bricks = 0;
+        contractor.bricks = 0;
+        contractor.currentHouseIndex = 0;
+        contractor.destroyHouse();
+        $("#digDirtBtn").addClass("hide").removeClass("disabled");
+        $("#buildBricksBtn").addClass("hide").removeClass("disabled");
+        $("#buildHouseBtn").addClass("hide").removeClass("disabled");
+        $("#newHouse").addClass("hide").removeClass("disabled");
+        $("#bucketCounter").emmpty();
+        $("#brickCounter").emmpty();
+        $("#getWorkersBtn").removeClass("active");
+        printReasourceCount();
     });
 });

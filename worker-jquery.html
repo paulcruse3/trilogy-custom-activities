@@ -9,27 +9,31 @@
         .house {
             font-size: 100px;
             text-align: center;
+            min-height: 278px;
         }
         .hide {
             display: none;
+        }
+        a.disabled{
+            pointer-events: none;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>House Builder</h2>
+        <h2>House Builder <a class="btn btn-danger hide" id="newHouse">New House</a></h2>
         <div class="row">
             <div class="col-md-3">
-                <a class="btn btn-primary" id="getWorkers">Get Workers</a>
+                <a class="btn btn-primary" id="getWorkersBtn">Get Workers</a>
             </div>
             <div class="col-md-3">
-                <a class="btn btn-warning hide" id="digDirt">Digger: Dig Dirt</a>
+                <a class="btn btn-warning hide" id="digDirtBtn">Digger: Dig Dirt</a>
             </div>
             <div class="col-md-3">
-                <a class="btn btn-info hide" id="buildBricks">Bricker: Build Bricks</a>
+                <a class="btn btn-info hide" id="buildBricksBtn">Bricker: Build Bricks</a>
             </div>
             <div class="col-md-3">
-                <a class="btn btn-success hide" id="buildHouse">Build House</a>
+                <a class="btn btn-success hide" id="buildHouseBtn">Build House</a>
             </div>
         </div>
         <hr />
