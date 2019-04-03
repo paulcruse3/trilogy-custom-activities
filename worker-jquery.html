@@ -7,18 +7,11 @@
     <script src="https://code.jquery.com/jquery.js"></script>
     <style>
         .house {
-            background-color: lightgrey;
-            height:200px;
-            width: 500px;
-            text-align: center;
-            border-radius: 3px;
             font-size: 100px;
+            text-align: center;
         }
         .hide {
             display: none;
-        }
-        .spacing{
-            margin: 15px;
         }
     </style>
 </head>
@@ -26,23 +19,28 @@
     <div class="container">
         <h2>House Builder</h2>
         <div class="row">
-            <div class="col-m-3">
+            <div class="col-md-3">
                 <a class="btn btn-primary" id="getWorkers">Get Workers</a>
             </div>
-            <div class="col-m-3">
+            <div class="col-md-3">
                 <a class="btn btn-warning hide" id="digDirt">Digger: Dig Dirt</a>
             </div>
-            <div class="col-m-3">
+            <div class="col-md-3">
                 <a class="btn btn-info hide" id="buildBricks">Bricker: Build Bricks</a>
             </div>
-            <div class="col-m-3">
+            <div class="col-md-3">
                 <a class="btn btn-success hide" id="buildHouse">Build House</a>
             </div>
         </div>
+        <hr />
         <div class="row">
-            <div class="col-m-8 col-xs-offset-2 house" id="plot">
-
+            <div class="col-md-12">
+                <div class="jumbotron house" id="plot"></div>
             </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6" id="bucketCounter"></div>
+            <div class="col-md-6" id="brickCounter"></div>
         </div>
     </div>
     <script src="worker.js"></script>
