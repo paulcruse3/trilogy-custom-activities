@@ -2,18 +2,49 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Correct Color Picker</title>
+    <title>House Builder</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery.js"></script>
+    <style>
+        .house {
+            background-color: lightgrey;
+            height:200px;
+            width: 500px;
+            text-align: center;
+            border-radius: 3px;
+            font-size: 100px;
+        }
+        .hide {
+            display: none;
+        }
+        .spacing{
+            margin: 15px;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <h2>House Builder</h2>
-    </div>
-    <script>
-        $(document).ready(function() {
+        <div class="row">
+            <div class="col-m-3">
+                <a class="btn btn-primary" id="getWorkers">Get Workers</a>
+            </div>
+            <div class="col-m-3">
+                <a class="btn btn-warning hide" id="digDirt">Digger: Dig Dirt</a>
+            </div>
+            <div class="col-m-3">
+                <a class="btn btn-info hide" id="buildBricks">Bricker: Build Bricks</a>
+            </div>
+            <div class="col-m-3">
+                <a class="btn btn-success hide" id="buildHouse">Build House</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-m-8 col-xs-offset-2 house" id="plot">
 
-        });
-    </script>
+            </div>
+        </div>
+    </div>
+    <script src="worker.js"></script>
 </body>
 </html>
