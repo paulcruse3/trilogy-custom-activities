@@ -15,19 +15,35 @@
 </head>
 <body>
     <div class="container">
-        <h2>Student Selector</h2>
+        <h2>
+            Random Student Picker:
+            <select class="form-control" id="class">
+                <option value="select" disabled selected>Select Class</option>
+                <option value="mon-wed">Monday/Wednesday</option>
+                <option value="tue-thur">Tuesday/Thursday</option>
+                <option value="Sat">Saturday</option>
+            </select>
+        </h2>
         <div class="row">
             <div class="col-md-3">
-                <a class="btn btn-success" id="pickStudentBtn">Pick Student</a>
+                <a class="btn btn-success" id="pick">Pick Student</a>
             </div>
         </div>
         <hr />
         <div class="row">
             <div class="col-md-12">
-                <div class="jumbotron student" id="studentPicked"></div>
+                <div class="jumbotron student" id="student"></div>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Already Picked: <a class="btn btn-info" id="clear">Clear</a></h3>
+                <div id="choosen"></div>
             </div>
         </div>
     </div>
-    <script src="student-randomizer.js"></script>
+    <script src="students.js"></script>
+    <script src="randomizer.js"></script>
 </body>
 </html>
