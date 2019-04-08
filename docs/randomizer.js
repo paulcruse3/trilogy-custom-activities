@@ -8,7 +8,7 @@ $("#clear").on('click', function(){
     resetStudents();
 });
 var pickedStudents = [];
-var student = '';
+var students = [];
 function changeClass(){
     var selectClass = $("#class option:selected").text();
     if (selectClass === 'Monday/Wednesday') {
