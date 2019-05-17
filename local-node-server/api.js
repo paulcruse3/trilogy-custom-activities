@@ -7,22 +7,21 @@ api.use(express.static(__dirname));
 api.listen(port);
 console.log('go to http://localhost:'+port);
 
-api.route('/').get(homePage);
-api.route('/json').get(jsonPage);
-api.route('/id/:id').get(idPage);
+api.route('/').get(homeEndpoint);
+api.route('/json').get(jsonEndpoint);
+api.route('/id/:id').get(idEndpoint);
 
-function homePage(request, response){
+function homeEndpoint(request, response){
     console.log('home page hit');
-    response.send('Welcome To My Home Page');
+    response.send('Welcome To My Home Endpoint');
 }
 
-function jsonPage(request, response){
+function jsonEndpoint(request, response){
     console.log('json page hit');
-    response.json({'message': 'Welcome To My JSON Page'});
+    response.json({'message': 'Welcome To My JSON Endpoint'});
 }
 
-function idPage(request, response){
+function idEndpoint(request, response){
     console.log('id page hit');
-    // response.send('You requested id:' + request.params.id); WRONG APIs USE JSON
     response.json ({'idRequested': request.params.id}); //notice its a string
 }
