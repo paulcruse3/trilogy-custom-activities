@@ -1,5 +1,15 @@
 {
+    "name": "local-node-server",
+    "version": "1.0.0",
+    "description": "Simple instructions to turn your laptop into a local node api server",
+    "main": "api.js",
+    "scripts": {
+        "start": "nodemon --optimize_for_size --max_old_space_size=512 --gc_interval=100 api.js"
+    },
+    "license": "ISC",
     "dependencies": {
-        "express": "^4.17.0"
+        "dotenv": "^8.0.0",
+        "express": "^4.17.1",
+        "nodemon": "^1.19.1"
     }
 }

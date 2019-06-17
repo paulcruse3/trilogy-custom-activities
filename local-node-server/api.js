@@ -1,6 +1,8 @@
+require('dotenv').config();
+
 var express = require('express');
 var api = express();
-var port = process.argv[2] || 9000;
+var port = process.env.PORT || 9000;
 
 api.use(express.static(__dirname));
 
