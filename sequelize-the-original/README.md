@@ -1,6 +1,6 @@
 # Sequelize The Original
 
-The original is always better than the sequel :laughing:. [Want Emojis?](https://gist.github.com/rxaviers/7360908)
+The original is always better than the sequel :laughing:. ([Want Emojis?](https://gist.github.com/rxaviers/7360908))
 
 ## Installation
 
