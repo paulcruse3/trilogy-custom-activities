@@ -2,7 +2,7 @@
 
 ## 0) Select A Dev Ops :neckbeard:
 
-* pick one person to be your dev ops engineer. He will be the `ONLY` one to down the following steps (except for those steps that say `EVERYONE`)
+* pick one person to be your dev ops engineer. He/She will be the `ONLY` one to down the following steps (except for those steps that say `EVERYONE`)
 
 ## 1) Create GitHub Organization :family:
 
