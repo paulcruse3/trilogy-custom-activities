@@ -1,13 +1,13 @@
-var connection = require('./connection');
+let connection = require('./connection');
 
-var orm = {
-    create: function(name, properties, retry=0){
-        var query = this._tablePropertiesBuilder(name, properties);
+let orm = {
+    createTable: function(name, properties, retry=0){
+        let query = this._buildTableQuery(name, properties);
         connection.query(query, function(error, result){
             if (error) {
                 if (query.includes('FOREIGN KEY') && retry < 500){
                     console.log('Waiting on foreign key constraint: ', retry);
-                    orm.create(name, properties, retry+1);
+                    orm.create(name, properties, debug, retry+1);
                 } else {
                     console.log('Error creating table: ', query, error);
                     throw error;
@@ -17,11 +17,11 @@ var orm = {
             }
         });
     },
-    _tablePropertiesBuilder: function(name, properties){
-        var query = 'CREATE TABLE IF NOT EXISTS ' + name + '(';
-        var tableProperties = [];
-        for (var column in properties) {
-            var statement = [];
+    _buildTableQuery: function(name, properties){
+        let query = 'CREATE TABLE IF NOT EXISTS ' + name + '(';
+        let tableProperties = [];
+        for (let column in properties) {
+            let statement = [];
             statement.push(column + ' ' + properties[column].type);
             if (properties[column].notNull){
                 statement.push('NOT NULL');
@@ -46,7 +46,7 @@ var orm = {
                 tableProperties.push('UNIQUE KEY '+column+'('+column+')');
             }
             if (properties[column].foreignKey){
-                var fkQuery = 'CONSTRAINT '+column+' FOREIGN KEY('+column+')';
+                let fkQuery = 'CONSTRAINT '+column+' FOREIGN KEY('+column+')';
                 fkQuery += ' REFERENCES '+properties[column].referenceTable+ '('+properties[column].referenceId+')';
                 fkQuery += ' ON DELETE CASCADE ON UPDATE CASCADE';
                 tableProperties.push(fkQuery);
@@ -57,36 +57,59 @@ var orm = {
         return query;
     },
     select: function(query, callback) {
-        var queryString = "SELECT ?? FROM ??";
-        if (!query.columns){
-            query.columns = ['*'];
+        let queryString = "SELECT ?? FROM ??";
+        let searchCriteria = [query.columns || ['*'], query.from];
+        if (query.where){
+            queryString = orm._buildWhereStatement(query, queryString, searchCriteria);
         }
-        var searchCriteria = [query.columns, query.from];
-        if (query.equals){
-            queryString += " WHERE ?? = ?";
-            searchCriteria.push(query.where);
-            searchCriteria.push(query.equals);
-        }
-        connection.query(queryString, searchCriteria, function(error, result) {
+        let statement = connection.query(queryString, searchCriteria, function(error, result) {
             callback(error, result);
         });
+        if (query.debug){
+            console.log(statement.sql);
+        }
+    },
+    _buildWhereStatement: function(query, queryString, searchCriteria){
+        queryString += " WHERE ";
+        let whereString = [];
+        for (let where in query.where) {
+            searchCriteria.push(query.where[where]);
+            whereString.push(' ? ');
+        }
+        let operator = query.operator || 'AND';
+        queryString += whereString.join(operator);
+        return queryString;
     },
     insert: function(query, callback) {
-        var queryString = "INSERT INTO ?? SET ?";
-        connection.query(queryString, [query.table, query.data], function(error, result) {
+        let queryString = "INSERT INTO ?? SET ?";
+        let statement = connection.query(queryString, [query.table, query.data], function(error, result) {
             callback(error, result);
         });
+        if (query.debug){
+            console.log(statement.sql);
+        }
     },
     update: function(query, callback) {
-        var queryString = "UPDATE ?? SET ? WHERE ?";
+        let queryString = "UPDATE ?? SET ? WHERE ?";
         console.log(query);
-        connection.query(queryString, [query.table, query.data, query.equals], function(error, result) {
+        let statement = connection.query(queryString, [query.table, query.data, query.where[0]], function(error, result) {
             callback(error, result);
         });
+        if (query.debug){
+            console.log(statement.sql);
+        }
     },
     delete: function(query, callback) {
-        var queryString = "DELETE FROM ?? WHERE ?";
-        connection.query(queryString, [query.table, query.equals], function(error, result) {
+        let queryString = "DELETE FROM ?? WHERE ?";
+        let statement = connection.query(queryString, [query.table, query.where[0]], function(error, result) {
+            callback(error, result);
+        });
+        if (query.debug){
+            console.log(statement.sql);
+        }
+    },
+    query: function(queryString, queryArray, callback) {
+        connection.query(queryString, queryArray, function(error, result) {
             callback(error, result);
         });
     }

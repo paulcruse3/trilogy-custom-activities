@@ -1,0 +1,16 @@
+{
+    "local": {
+        "user": "root",
+        "password": "root",
+        "database": "todolist",
+        "host": "127.0.0.1",
+        "port": 3306,
+    },
+    "production": {
+        "user": "root",
+        "password": "root",
+        "database": "todolist",
+        "host": "127.0.0.1",
+        "port": 3306,
+    }
+}
