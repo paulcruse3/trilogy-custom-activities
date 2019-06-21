@@ -1,5 +1,5 @@
 # Project 2
 
-* [Getting Started](./REQUIREMENTS.md)
+* [Requirements](./REQUIREMENTS.md)
 
 * [Getting Started](./INIT.md)
