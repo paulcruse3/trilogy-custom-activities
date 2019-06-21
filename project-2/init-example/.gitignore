@@ -1,0 +1,2 @@
+node_modules/*
+/*.env*/ (normally would have this included)

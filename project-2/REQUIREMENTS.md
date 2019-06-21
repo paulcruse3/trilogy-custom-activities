@@ -32,4 +32,4 @@ Your project must:
 
 * Meet good quality coding standards (indentation, scoping, naming).
 
-* Must not expose sensitive API key information on the server, see [Protecting-API-Keys-In-Node.md](../../../10-nodejs/03-Supplemental/Protecting-API-Keys-In-Node.md)
+* Need help getting started, see: [Getting Started](./INIT.md)
