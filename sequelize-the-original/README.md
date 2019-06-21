@@ -1,4 +1,4 @@
-# Sequelize The Original
+# Sequelize The Original :movie_camera:
 
 The original is always better than the sequel :laughing:. ([Want Emojis?](https://gist.github.com/rxaviers/7360908))
 
@@ -107,6 +107,52 @@ let queryString = 'SELECT * FROM users JOIN comments ON comment.user_id = users.
 let queryArray = [user.user_id]; //has to be a primitive value
 orm.query(queryString, queryArray, function(error, data){
     console.log(data);
+});
+```
+
+### Create A Table :-1:
+
+* For some crazy reason you want your app to dynamically create tables? See the example below:
+
+```javascript
+// table name first, then an object of objects, describing the table
+orm.create('users', {
+    user_id: {
+        type: 'INT(11)',
+        autoIncrement: true,
+        primaryKey: true,
+        notNull: true
+    },
+    company_id: {
+        type: 'INT(11)',
+        foreignKey: true,
+        referenceTable: 'companies',
+        referenceId: 'company_id'
+    },
+    email: {
+        type: 'VARCHAR(256)',
+        notNull: true,
+        uniqueKey: true
+    },
+    password: {
+        type: 'VARCHAR(256)',
+        notNull: true
+    },
+    salt: {
+        type: 'VARCHAR(256)',
+        notNull: true
+    },
+    session_token: {
+        type: 'VARCHAR(256)'
+    },
+    created: {
+        type: 'DATETIME',
+        timestampCreate: true
+    },
+    modified: {
+        type: 'DATETIME',
+        timestampUpdate: true
+    }
 });
 ```
 
