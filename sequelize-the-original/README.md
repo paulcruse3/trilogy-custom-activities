@@ -30,7 +30,7 @@ The original is always better than the sequel :laughing:. [Want Emojis?](https:/
 
 ```javascript
     let query = {
-        columns: ['column1', 'column2', 'column3'], //will default to ['*'] for everything (not recommend)
+        columns: ['column1', 'column2', 'column3'], //will default to ['*'] for everything (not recommended)
         from:'tableName'
     };
     orm.select(query, function(error, data){
