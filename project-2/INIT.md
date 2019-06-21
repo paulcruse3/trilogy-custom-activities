@@ -90,7 +90,7 @@ let config = {
         apiKeys:{}
     }
 };
-module.exports = config[process.env.APP_ENV];
+module.exports = config[process.env.APP_ENV || 'local'];
 ```
 
 * create a `server.js` file in the root of your project folder; add this to the file:
