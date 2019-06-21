@@ -127,12 +127,13 @@ orm.create('users', {
         type: 'INT(11)',
         foreignKey: true,
         referenceTable: 'companies',
-        referenceId: 'company_id'
+        referenceId: 'company_id',
+        notNull: true
     },
-    email: {
+    username: {
         type: 'VARCHAR(256)',
-        notNull: true,
-        uniqueKey: true
+        uniqueKey: true,
+        notNull: true
     },
     password: {
         type: 'VARCHAR(256)',
