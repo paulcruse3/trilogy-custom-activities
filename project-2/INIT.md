@@ -64,7 +64,7 @@ node_modules/*
 
 ## 3) Add boiler plate code for .env, server.js and config.js :pencil:
 
-* create a `.env` file in the root of your project folder; add this to the file:
+* [EVERYONE] create a `.env` file in the root of your project folder; add this to the file:
 ```
 # App environment Config
 APP_ENV=local
