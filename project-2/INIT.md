@@ -1,20 +1,24 @@
 # Project 2 Init
 
-## 1) Create GitHub Organization
+## 0) Select A Dev Ops :neckbeard:
+
+* pick one person to be your dev ops engineer. He will be the `ONLY` one to down the following steps (except for those steps that say `EVERYONE`)
+
+## 1) Create GitHub Organization :family:
 
 * In the upper-right corner of any page, click your profile photo, then click Settings
 * In your user settings sidebar, click Organizations
 * In the "Organizations" section, click New organization
 * Invite your teammates
 
-## 2) Create GitHub repo for that organization
+## 2) Create GitHub repo for that organization :open_file_folder:
 
 * Make it public
 * Initialize it
 * [EVERYONE] clone and pull down the repo and try to create a branch and push it up
 * @NOTE: For those using an app to manage your git (like GitKraken) you may have to grant access to that app: https://github.com/settings/applications)
 
-## 3) Init the application
+## 3) Init the application :fast_forward:
 
 * `cd` to your project directory
 * create a `.gitignore` file then add `node_modules/*` and `.env` to that file (should look like this):
@@ -58,7 +62,7 @@ node_modules/*
 }
 ```
 
-## 3) Add boiler plate code for .env, server.js and config.js
+## 3) Add boiler plate code for .env, server.js and config.js :pencil:
 
 * create a `.env` file in the root of your project folder; add this to the file:
 ```
@@ -110,7 +114,7 @@ app.route('/').get(function(request, response) {
 });
 ```
 
-## 3) Push to Heroku
+## 4) Push to Heroku :space_invader:
 
 * from the project directory run `heroku login`
 * then `heroku create`
@@ -118,26 +122,26 @@ app.route('/').get(function(request, response) {
 * then `heroku config:set APP_ENV=prod` (remember this command to because you will need to add api keys)
 * enable automatic deploy is configured properly `<your-app-project> -> Deploy` (ensure Heroku Dashboard has team access)
 
-## 4) Add Credit Card to Heroku
+## 5) Add Credit Card to Heroku :credit_card:
 
 * click your profile top right corner -> `Account Settings`
 * Set Up `Two Factor Authentication`
 * Billing Enter Credit Card Info
 
-## 5) Add JawDB to your Project
+## 6) Add JawDB to your Project :fish:
 
 * add JawsDB to your project with `heroku addons:create jawsdb`
 * add `process.env.JAWSDB_URL` to your prod.mysql.url in your `config.js` file
 * git `stage`, `commit` and `push` to master, check your app online to see if the changes
 * (optional) if you don't see your changes you may have to `git push heroku master`, ensure your automatic deployment is working properly.
 
-## 6) Test Database Connection [EVERYONE DO]
+## 7) Test Database Connection [EVERYONE DO] :syringe:
 
 * open your favorite MySQL GUI (MySQL Workbench or Sequel Pro)
 * Go to your your project app page in the browser (that crazy url that heroku gives you)
 * c/p past parts of the `mysql` config key as appropriate (remember its in this format: mysql://username:password@hostname:port/database_name)
 
-## 6) Lock Down Master Branch
+## 8) Lock Down Master Branch :lock:
 
 * remove unnecessary code, then commit and push master (will be the last time)
 * got to github -> your organization -> your team repo -> settings -> branches -> add rule
