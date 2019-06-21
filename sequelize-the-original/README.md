@@ -26,11 +26,11 @@ The original is always better than the sequel :laughing:. [Want Emojis?](https:/
 
 ### Select (No Conditions)
 
-* Want to select particular columns from a particular table, see example below:
+* Want to select ALL the data's particular columns from a particular table, see example below:
 
 ```javascript
     let query = {
-        columns: ['column1', 'column2', 'column3'], //will default to ['*'] for everything (not recommend :suspect:)
+        columns: ['column1', 'column2', 'column3'], //will default to ['*'] for everything (not recommend)
         from:'tableName'
     };
     orm.select(query, function(error, data){
