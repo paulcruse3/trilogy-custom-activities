@@ -17,6 +17,7 @@
 * Initialize it
 * [EVERYONE] clone and pull down the repo and try to create a branch and push it up
 * @NOTE: For those using an app to manage your git (like GitKraken) you may have to grant access to that app: https://github.com/settings/applications)
+* invite your teammates to that repo (Repo -> Settings -> Collaborators)
 
 ## 3) Init the application :fast_forward:
 
