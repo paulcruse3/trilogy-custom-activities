@@ -4,12 +4,15 @@
     "description": "Simple instructions to turn your laptop into a local node api server",
     "main": "api.js",
     "scripts": {
-        "start": "nodemon --optimize_for_size --max_old_space_size=512 --gc_interval=100 api.js"
+        "start": "nodemon --optimize_for_size --max_old_space_size=512 --gc_interval=100 server.js"
     },
     "license": "ISC",
     "dependencies": {
         "dotenv": "^8.0.0",
         "express": "^4.17.1",
-        "nodemon": "^1.19.1"
+        "hashpass": "0.0.0",
+        "mysql": "^2.17.1",
+        "nodemon": "^1.19.1",
+        "uuid": "^3.3.2"
     }
 }
