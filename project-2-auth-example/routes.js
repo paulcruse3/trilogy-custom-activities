@@ -1,5 +1,5 @@
 var user = require("./controllers/user");
-var authorizer = require("./controllers/config/authorizer");
+var authorizer = require("./controllers/middleware/authorizer");
 
 module.exports = function(app) {
     app.post("/api/user", function(request, respsonse) {

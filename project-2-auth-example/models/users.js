@@ -1,4 +1,4 @@
-let orm = require('./config/orm');
+let orm = require('./global/orm');
 
 let users = {
     insertNew: function(user, callback){
