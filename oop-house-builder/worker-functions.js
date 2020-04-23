@@ -2,13 +2,7 @@ $(document).ready(function() {
     var bucketsOfDirt = 0;
     var bricks = 0;
     var word = '';
-                // H 1st
-                // HO 2nd
-                // HOU 3rd
     var house = ['H','O','U','S','E'];
-                // ['O','U','S','E'];
-                // ['U','S','E'];
-                // ['S','E'];
     var getDirt = function(buckets){
         buckets = buckets + Math.floor(Math.random() * 100);
         console.log('buckets', buckets);
@@ -32,8 +26,6 @@ $(document).ready(function() {
         bricks = bricks - (Math.floor(bricks / 100) * 100);
         return [bricks, house, word];
     }
-
-// ===================== UI CODE Below =============================
     $('#getWorkersBtn').on('click', function(){
         $('#digDirtBtn').show();
         $('#buildBricksBtn').show();
